@@ -2,28 +2,25 @@ import unittest
 from circle import circle_area
 from math import pi
 
-# Создаем класс для тестирования ф-ии, который
-# наследуется от класса TestCase
-class TestCircleArea(unittest.TestCase):
+class TestCircleLength(unittest.TestCase):
 
-    # assertEqual - ф-ия, которая отслеживает равенство
-    def test_area(self):
-        self.assertEqual(circle_area(3), pi*3**2)
-        self.assertEqual(circle_area(1), pi)
+    def test_number(self):
         self.assertEqual(circle_area(0), 0)
-        self.assertEqual(circle_area(2.5), pi*2.5**2)
+        self.assertEqual(circle_area(1), 2*pi*1)
+        self.assertEqual(circle_area(5), 2*pi*5)
+        self.assertEqual(circle_area(1.2), 2*pi*1.2)
 
-    # Проверим, выбрасывается ли исключение для отрицательных радиусов
     def test_values(self):
-        self.assertRaises(ValueError, circle_area, -2)
+        self.assertRaises(ValueError, circle_area, -6.8)
         self.assertRaises(ValueError, circle_area, -1)
 
-    # Проверим, выбрасывается ли исключение о несовместимости типов
     def test_types(self):
         self.assertRaises(TypeError, circle_area, 5+2j)
-        self.assertRaises(TypeError, circle_area, 'five')
-        self.assertRaises(TypeError, circle_area, [16, 22])
-        self.assertRaises(TypeError, circle_area, [42])
+        self.assertRaises(TypeError, circle_area, 'text')
+        self.assertRaises(TypeError, circle_area, [12, 3]) 
+        self.assertRaises(TypeError, circle_area, [12])
+        self.assertRaises(TypeError, circle_area, [4, 23])
+        self.assertRaises(TypeError, circle_area, False) 
         self.assertRaises(TypeError, circle_area, True) 
 
          
